@@ -57,7 +57,7 @@ ROOT_URLCONF = 'pms.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates', ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,8 +81,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'pms',                      
         #Set user and password for your postgres pms user
-        'USER': '',
-        'PASSWORD': '',
+        'USER': 'cyee',
+        'PASSWORD': 'bigHouse8063!',
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -126,3 +126,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Redirect URL on successful login
+LOGIN_REDIRECT_URL = 'home'
