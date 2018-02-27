@@ -81,8 +81,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'pms',                      
         #Set user and password for your postgres pms user
-        'USER': 'cyee',
-        'PASSWORD': 'bigHouse8063!',
+        'USER': 'cgarcia',
+        'PASSWORD': 'password1',
         'HOST': 'localhost',
         'PORT': '',
     }
