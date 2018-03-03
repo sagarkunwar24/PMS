@@ -5,3 +5,5 @@ venv/
 Notes.txt
 
 vs.py
+
+__pycache__/

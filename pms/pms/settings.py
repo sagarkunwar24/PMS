@@ -29,8 +29,8 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
 ]
 
-EMAIL_HOST = 'smtp.gmail.com',
-EMAIL_HOST_USER = 'yee.camero23@gmail.com',
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'yee.camero23@gmail.com'
 EMAIL_HOST_PASSWORD = 'tyrone11'
 EMAIL_PORT = 587
 #encrypts email

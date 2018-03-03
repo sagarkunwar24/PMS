@@ -27,7 +27,7 @@ def email(request):
             )
 
             # redirect to a new URL:
-            return HttpResponseRedirect('main/home.html')
+            return HttpResponseRedirect('/')
 
     # if a GET (or any other method) we'll create a blank form
     else:
