@@ -9,6 +9,7 @@ from .forms import PurchaseOrderForm
 def home(request):
     return render(request, 'main/home.html')
 
+<<<<<<< HEAD
 @login_required
 def email(request):
     # if this is a POST request we need to process the form data
@@ -34,3 +35,7 @@ def email(request):
         form = PurchaseOrderForm()
 
     return render(request, 'main/email.html', {'form': form})
+=======
+def order(request):
+    return render(request, 'main/order.html')
+>>>>>>> 0dedbba3c12800889b6b66b4c12e615fa7c1c823
