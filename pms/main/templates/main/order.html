@@ -1,8 +1,17 @@
 {% extends "layout.html" %}
 {% load staticfiles %}
+{% load bootstrap4 %}
 
 {% block content %}
-<br>
-    <h3>Create Order</h3>
-    
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4">
+                <form id="order-form" method="POST" action={% url 'order' %}>
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div> 
+    </div>
 {% endblock content %}
