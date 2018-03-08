@@ -6,4 +6,4 @@ Notes.txt
 
 vs.py
 
-__pycache__/
+*.pyc
