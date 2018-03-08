@@ -5,6 +5,7 @@ from django import forms
 from django.contrib.auth.decorators import login_required
 from .forms import * 
 from django.contrib.auth.models import User
+from .models import Contract
 
 
 @login_required
@@ -58,3 +59,9 @@ def order(request):
     else:
         form = PurchaseOrderForm()
     return render(request, 'main/order.html', {'form': form})
+
+
+@login_required
+def contract(request):
+    contracts = Contract.objects.all()
+    return render(request, 'main/contract.html')

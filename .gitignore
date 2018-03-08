@@ -7,3 +7,5 @@ Notes.txt
 vs.py
 
 *.pyc
+
+pms/main/migrations/

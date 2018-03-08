@@ -5,7 +5,7 @@ from django.db import models
 class Quote(models.Model):
     QID = models.AutoField(primary_key=True)
     QLink = models.TextField(max_length=2000)
-    Qprice = models.IntegerField()
+    Qprice = models.FloatField()
     Supplier = models.CharField(max_length=30)
 
 class Contract(models.Model):
