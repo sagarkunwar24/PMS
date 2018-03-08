@@ -12,4 +12,4 @@ class ContactForm(forms.Form):
 class PurchaseOrderForm(ModelForm):
     class Meta: 
         model = models.OrderDetail
-        fields = ['price', 'quantity', 'orderDate', 'isApproved', 'hasArrived']
+        fields = ['productName', 'productDescription', 'deliveryAddress','quantity', 'orderDate']
