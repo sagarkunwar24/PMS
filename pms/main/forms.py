@@ -12,4 +12,10 @@ class ContactForm(forms.Form):
 class PurchaseOrderForm(ModelForm):
     class Meta: 
         model = models.OrderDetail
-        fields = ['productName', 'productDescription', 'deliveryAddress','quantity', 'orderDate']
+        fields = ('CID', 'productName', 'productDescription', 'deliveryAddress', 'quantity', 'orderDate', 'orderDate', 'dateApproved', 'dateReceived')
+
+
+class QuoteForm(ModelForm):
+    class Meta:
+        model = models.Quote
+        fields = ('Supplier', 'QPrice', 'QLink')

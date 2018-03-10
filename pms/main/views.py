@@ -42,9 +42,20 @@ def email(request):
 @login_required
 def order(request):
     if request.method == "POST":
-        form = PurchaseOrderForm(request.POST)
+        purchase_form = PurchaseOrderForm(request.POST)
+        quote_form = QuoteForm(request.POST)
+        price = 0
+        quantity = 0.0
+        saved_quote = 0
 
-        if form.is_valid():
+        if quote_form.is_valid():
+            # finished_quote_form = quote_form.save(commit=False)
+            price = quote_form.cleaned_data['QPrice']
+            saved_quote = quote_form.save()
+
+        if purchase_form.is_valid():
+            finished_purchase_form = purchase_form.save(commit=False)
+
             user_email = request.user.email
             send_mail(
                 'PURCHASE ORDER CONFIRMATION',
@@ -54,11 +65,24 @@ def order(request):
                 fail_silently=False,
             )
 
+            quantity = purchase_form.cleaned_data['quantity']
+            
+            def calcTotal(price, quantity):
+                total = price * quantity
+                return total
+
+            finished_purchase_form.total = calcTotal(price, quantity)
+            finished_purchase_form.EID = request.user
+            finished_purchase_form.QID = saved_quote
+
+            finished_purchase_form.save()
+
             return HttpResponseRedirect('/')
             
     else:
-        form = PurchaseOrderForm()
-    return render(request, 'main/order.html', {'form': form})
+        purchase_form = PurchaseOrderForm()
+        quote_form = QuoteForm()
+    return render(request, 'main/order.html', {'purchase_form': purchase_form, 'quote_form': quote_form})
 
 
 @login_required

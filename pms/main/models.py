@@ -5,7 +5,7 @@ from django.db import models
 class Quote(models.Model):
     QID = models.AutoField(primary_key=True)
     QLink = models.TextField(max_length=2000)
-    Qprice = models.FloatField()
+    QPrice = models.FloatField()
     Supplier = models.CharField(max_length=30)
 
 class Contract(models.Model):
@@ -24,10 +24,10 @@ class OrderDetail(models.Model):
     productDescription = models.TextField(max_length=200)
     deliveryAddress = models.TextField(max_length=200)
     quantity = models.IntegerField()
-    total = models.IntegerField()
+    total = models.FloatField()
     orderDate = models.DateField()
-    approvedDate = models.IntegerField()
-    dateReceived = models.IntegerField()
+    dateApproved = models.DateField()
+    dateReceived = models.DateField()
 
 
 
