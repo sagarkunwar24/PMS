@@ -47,35 +47,38 @@ def order(request):
         price = 0
         quantity = 0.0
         saved_quote = 0
+        saved_purchase = 0
 
         if quote_form.is_valid():
-            # finished_quote_form = quote_form.save(commit=False)
+            finished_quote_form = quote_form.save(commit=False)
             price = quote_form.cleaned_data['QPrice']
-            saved_quote = quote_form.save()
 
-        if purchase_form.is_valid():
-            finished_purchase_form = purchase_form.save(commit=False)
+            if purchase_form.is_valid():
+                finished_purchase_form = purchase_form.save(commit=False)
 
-            user_email = request.user.email
-            send_mail(
-                'PURCHASE ORDER CONFIRMATION',
-                'Hi {}, you\'re purchase order form has been received.\n\nPurchase Management System'.format(request.user.first_name),
-                'yee.camero23@gmail.com',
-                [user_email],
-                fail_silently=False,
-            )
+                user_email = request.user.email
+                send_mail(
+                    'PURCHASE ORDER CONFIRMATION',
+                    'Hi {}, you\'re purchase order form has been received.\n\nPurchase Management System'.format(request.user.first_name),
+                    'yee.camero23@gmail.com',
+                    [user_email],
+                    fail_silently=False,
+                )
 
-            quantity = purchase_form.cleaned_data['quantity']
-            
-            def calcTotal(price, quantity):
-                total = price * quantity
-                return total
+                quantity = purchase_form.cleaned_data['quantity']
+                
+                def calcTotal(price, quantity):
+                    total = price * quantity
+                    return total
 
-            finished_purchase_form.total = calcTotal(price, quantity)
-            finished_purchase_form.EID = request.user
-            finished_purchase_form.QID = saved_quote
+                finished_purchase_form.total = calcTotal(price, quantity)
+                finished_purchase_form.EID = request.user
+                # finished_purchase_form.QID = saved_quote
 
-            finished_purchase_form.save()
+                saved_purchase = finished_purchase_form.save()
+
+            finished_quote_form.OID = finished_purchase_form
+            saved_quote = finished_quote_form.save()
 
             return HttpResponseRedirect('/')
             
